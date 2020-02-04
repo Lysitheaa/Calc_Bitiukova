@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using static Calc_Bitiukova.OperationUtils;
 
 namespace Calc_Bitiukova
 {
@@ -12,7 +11,8 @@ namespace Calc_Bitiukova
         public static AddOperation Instance => lazy.Value;
 
         public string Designation => "+";
-        public OperationPrioriry Priority => OperationPrioriry.Second;
+
+        public OperationPrioriry Priority => OperationPrioriry.Third;
 
         private AddOperation() { }
 

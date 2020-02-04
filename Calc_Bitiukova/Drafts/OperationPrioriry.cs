@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Calc_Bitiukova.Operations
 {
-    enum OperationPrioriry
+    enum OperationPrioriry1111
     {
         First,
         Second

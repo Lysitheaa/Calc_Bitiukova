@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using static Calc_Bitiukova.OperationUtils;
+
 
 namespace Calc_Bitiukova
 {
@@ -9,7 +9,6 @@ namespace Calc_Bitiukova
     {
         public const string AllowedChars = @"-+*/0-9\. ";
         private const string NotAllowedCharPattern = @"[^" + AllowedChars + @"]";
-        private const string numPattern = @"\d+(.\d+)?";
 
 
         public delegate bool ChecksHandler(string input);
@@ -64,7 +63,7 @@ namespace Calc_Bitiukova
         public static bool ExpressionCheck(string input) => 
             Regex.IsMatch(
                 input,
-                @"^[-+]?" + numPattern + @"([-+*/]" + numPattern + @")*$");
+                @"^[-+]?" + NUMBER_PATTERN + @"([-+*/]" + NUMBER_PATTERN + @")*$");
         
         public static bool AllowedCharactersCheck(string input) =>
             !Regex.IsMatch(input, NotAllowedCharPattern);

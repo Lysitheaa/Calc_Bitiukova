@@ -6,13 +6,13 @@ namespace Calc_Bitiukova
 {
     public abstract class Operation //: IOperation
     {
-        public enum OperationPrioriry
-        {
-            First,
-            Second
-        }
+        //public enum OperationPrioriry
+        //{
+        //    First,
+        //    Second
+        //}
 
-        public abstract OperationPrioriry Priority { get; }
+       // public abstract OperationPrioriry Priority { get; }
 
         public abstract string Designation { get; }
 

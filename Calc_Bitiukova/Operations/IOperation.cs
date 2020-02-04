@@ -4,24 +4,19 @@ using System.Text;
 
 namespace Calc_Bitiukova
 {
-    public enum OperationPrioriry
-    {
-        First,
-        Second
-    }
 
     public interface IOperation
     {
-        OperationPrioriry Priority { get; } 
+        public static AddOperation Instance { get; }
+
+        OperationUtils.OperationPrioriry Priority { get; } 
         
         string Designation { get; }
 
         double ExecuteBinaryOperation(double a, double b);
 
-        public static AddOperation Instance { get; }
 
-       // bool SyntaxCheck();
-
+        // bool SyntaxCheck();
         // string ErrorMessage();
     }
 }
