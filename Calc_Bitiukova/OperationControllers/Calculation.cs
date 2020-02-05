@@ -57,7 +57,7 @@ namespace Calc_Bitiukova
             
             foreach (OperationPrioriry p in Enum.GetValues(typeof(OperationPrioriry)))
                 foreach (string designation in OperationsContainer.GetOperationsByPriority(p))
-                    OneOperationCalc(inValuesDouble, inOperations, designation);
+                    OneOperationCalculation(inValuesDouble, inOperations, designation);
             
             if (inValuesDouble.Count == 1 && inOperations.Count == 0)
                 return inValuesDouble[0];
@@ -65,7 +65,7 @@ namespace Calc_Bitiukova
                 throw new ApplicationException("Extra values or operations were appeared somehow ¯\\_(ツ)_/¯");
         }
 
-        private void OneOperationCalc(List<double> values, List<string> operations, string designation)
+        private void OneOperationCalculation(List<double> values, List<string> operations, string designation)
         {
             int idx = operations.FindIndex(v => v.Equals(designation));
             double res;
