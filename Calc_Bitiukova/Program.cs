@@ -30,16 +30,16 @@ namespace Calc_Bitiukova
                     continue;
                 }
 
-                //try
-                //{
+                try
+                {
                     Calculation c = new Calculation(input);
                     WriteSuccessMessage("Result: ");
                     Console.WriteLine(c.Result.ToString());
-                //}
-                //catch (Exception e)
-                //{
-                //    WriteErrorMessage(e.Message);
-                //}
+                }
+                catch (Exception e)
+                {
+                    WriteErrorMessage(e.Message);
+                }
                 Console.WriteLine();
             }
         }
@@ -49,6 +49,7 @@ namespace Calc_Bitiukova
             OperationsContainer.AddOperation(AddOperation.Instance);
             OperationsContainer.AddOperation(SubstractOperation.Instance);
             OperationsContainer.AddOperation(MultiplyOperation.Instance);
+            OperationsContainer.AddOperation(DivisionOperation.Instance);
         }
 
 
