@@ -15,7 +15,7 @@ namespace Calc_Bitiukova
             {
                 Console.Write($"Please, input an expression using only ");
                 WriteAttantionMessage(OperationUtils.AllowedCharsMessage);
-                
+
                 string input = Console.ReadLine();
 
                 if (input == "q")
@@ -40,6 +40,7 @@ namespace Calc_Bitiukova
                 {
                     WriteErrorMessage(e.Message);
                 }
+
                 Console.WriteLine();
             }
         }

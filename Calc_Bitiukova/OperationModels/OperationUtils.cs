@@ -11,7 +11,7 @@ namespace Calc_Bitiukova.OperationModels
 
         static OperationUtils()
         {
-            AllowedCharsMessage = "numbers with . separator, spaces and symbols: "
+            AllowedCharsMessage = "numbers with . separator, spaces and symbols: () "
                 + string.Join(" ", OperationsContainer.OperationDesignations);
 
             AllowedOperationsPattern = @"[" + string.Join("\\", OperationsContainer.OperationDesignations) + @"]";

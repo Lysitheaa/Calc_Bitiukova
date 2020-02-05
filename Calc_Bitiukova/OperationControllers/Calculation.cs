@@ -24,12 +24,33 @@ namespace Calc_Bitiukova
 
         public Calculation(string input)
         {
-            Result = SimpleCalculation(input);
+            Result = CalculationWithBrackets(input);
+        }
+
+        private double CalculationWithBrackets(string input)
+        {
+            int openIdx = input.IndexOf('(');
+            int simpleExprLen = input.IndexOf(')') - openIdx - 1;
+            
+            while (openIdx >= 0)
+            {
+                string simpleExpression = input.Substring(openIdx + 1, simpleExprLen);
+                double tempRes = SimpleCalculation(simpleExpression);
+
+                input = input.Replace(
+                    input.Substring(openIdx, simpleExprLen + 2),
+                    tempRes.ToString());
+
+                openIdx = input.IndexOf('(');
+                simpleExprLen = input.IndexOf(')') - openIdx - 1;
+            }
+
+            return SimpleCalculation(input);
         }
 
         private double SimpleCalculation(string input)
         {
-            List<string> inOperations = new List<string>(Regex.Split(input, NUMBER_PATTERN).Where(v => v != string.Empty));
+            List<string> inOperations = new List<string>(Regex.Split(input, NUMBER_PATTERN).Where(v => v != string.Empty));             
             List<string> inValuesStr = new List<string> (input.Split(_operations, StringSplitOptions.RemoveEmptyEntries));
             List<double> inValuesDouble = new List<double>();
             ParseValues(inValuesStr, ref inValuesDouble);

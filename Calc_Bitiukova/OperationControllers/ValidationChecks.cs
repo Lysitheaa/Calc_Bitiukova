@@ -11,7 +11,6 @@ namespace Calc_Bitiukova
         
         private static readonly string AllowedChars; 
         private static readonly string NotAllowedCharPattern;
-        //private static readonly string AllowedOperationsPattern11;
 
         public delegate bool ChecksHandler(string input);
         private static event ChecksHandler _checkAll;
@@ -43,7 +42,6 @@ namespace Calc_Bitiukova
             _checkAll += BracketsCheck;
             _checkAll += AllowedCharactersCheck;
 
-            //AllowedOperationsPattern11 = @"[" + string.Join("\\", OperationsContainer.OperationDesignations) + @"]";
             AllowedChars = @"0-9 \." + AllowedOperationsPattern;
             NotAllowedCharPattern = @"[^" + AllowedChars + @"]";
         }
@@ -69,7 +67,7 @@ namespace Calc_Bitiukova
         public static bool ExpressionCheck(string input) => 
             Regex.IsMatch(
                 input,
-                @"^" + NUMBER_PATTERN + @"(" + AllowedOperationsPattern + NUMBER_PATTERN + @")*$"); 
+                @"^\(?" + NUMBER_PATTERN + @"(?:\(*" + AllowedOperationsPattern + @"\(*" + NUMBER_PATTERN + @"\)*)*$"); 
 
         public static bool AllowedCharactersCheck(string input) =>
             !Regex.IsMatch(input, NotAllowedCharPattern);
