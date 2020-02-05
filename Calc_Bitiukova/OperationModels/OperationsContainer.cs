@@ -2,7 +2,7 @@
 using System.Linq;
 
 
-namespace Calc_Bitiukova.Operations
+namespace Calc_Bitiukova.OperationModels
 {
     public static class OperationsContainer
     {
@@ -20,7 +20,7 @@ namespace Calc_Bitiukova.Operations
         public static ExecuteBinaryOperationHandler GetExecutionMethodByDesignation(string designation) =>
             _operations[designation].ExecuteBinaryOperation;
 
-        internal static string[] GetOperationsByPriority(OperationPrioriry priority) =>
+        public static string[] GetOperationsByPriority(OperationPrioriry priority) =>
             _operations.Where(o => o.Value.Priority == priority).Select(o => o.Key).ToArray();
     }
 }

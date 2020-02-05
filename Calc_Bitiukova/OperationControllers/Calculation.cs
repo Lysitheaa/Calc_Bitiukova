@@ -2,8 +2,8 @@
 using System.Linq;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Calc_Bitiukova.Operations;
-using static Calc_Bitiukova.Operations.OperationUtils;
+using Calc_Bitiukova.OperationModels;
+using static Calc_Bitiukova.OperationModels.OperationUtils;
 
 
 namespace Calc_Bitiukova

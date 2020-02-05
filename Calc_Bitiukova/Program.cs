@@ -1,5 +1,6 @@
 ﻿using System;
-using Calc_Bitiukova.Operations;
+using System.Text.RegularExpressions;
+using Calc_Bitiukova.OperationModels;
 
 
 namespace Calc_Bitiukova
@@ -22,7 +23,7 @@ namespace Calc_Bitiukova
 
                 OperationUtils.PrepareData(ref input);
 
-                if (!SyntaxCorrectivityChecks.ApplyAllChecks(input, out string message))
+                if (!ValidationChecks.ApplyAllChecks(input, out string message))
                 {
                     WriteErrorMessage(message);
                     Console.WriteLine();
@@ -47,7 +48,10 @@ namespace Calc_Bitiukova
         {
             OperationsContainer.AddOperation(AddOperation.Instance);
             OperationsContainer.AddOperation(SubstractOperation.Instance);
+            OperationsContainer.AddOperation(MultiplyOperation.Instance);
         }
+
+
 
         static void WriteErrorMessage(string message)
         {

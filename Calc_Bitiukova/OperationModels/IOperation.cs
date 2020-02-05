@@ -1,4 +1,4 @@
-﻿namespace Calc_Bitiukova.Operations
+﻿namespace Calc_Bitiukova.OperationModels
 {
     public interface IOperation
     {
@@ -11,7 +11,7 @@
         double ExecuteBinaryOperation(double a, double b);
 
 
-        // bool SyntaxCheck(string input);
+        // bool ValidationCheck(string input);
         // string GetErrorMessage { get; };
     }
 }

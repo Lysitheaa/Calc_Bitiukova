@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using Calc_Bitiukova.Operations;
-using static Calc_Bitiukova.Operations.OperationUtils;
+using Calc_Bitiukova.OperationModels;
+using static Calc_Bitiukova.OperationModels.OperationUtils;
 
 
 namespace Calc_Bitiukova
 {
-    public static class SyntaxCorrectivityChecks
+    public static class ValidationChecks
     {
         
         private static readonly string AllowedChars; 
         private static readonly string NotAllowedCharPattern;
-        private static readonly string AllowedOperations;
+        //private static readonly string AllowedOperationsPattern11;
 
         public delegate bool ChecksHandler(string input);
         private static event ChecksHandler _checkAll;
@@ -37,14 +37,14 @@ namespace Calc_Bitiukova
             ["BracketsCheck"] = "Oops.. Something went wrong with breackets in your expression. Please, check it."
         };
 
-        static SyntaxCorrectivityChecks()
+        static ValidationChecks()
         {
             _checkAll += ExpressionCheck;
             _checkAll += BracketsCheck;
             _checkAll += AllowedCharactersCheck;
 
-            AllowedOperations = string.Join("\\", OperationsContainer.OperationDesignations);
-            AllowedChars = @"0-9 \." + AllowedOperations;
+            //AllowedOperationsPattern11 = @"[" + string.Join("\\", OperationsContainer.OperationDesignations) + @"]";
+            AllowedChars = @"0-9 \." + AllowedOperationsPattern;
             NotAllowedCharPattern = @"[^" + AllowedChars + @"]";
         }
         
@@ -69,7 +69,7 @@ namespace Calc_Bitiukova
         public static bool ExpressionCheck(string input) => 
             Regex.IsMatch(
                 input,
-                @"^" + NUMBER_PATTERN + @"([" + AllowedOperations + "]" + NUMBER_PATTERN + @")*$"); 
+                @"^" + NUMBER_PATTERN + @"(" + AllowedOperationsPattern + NUMBER_PATTERN + @")*$"); 
 
         public static bool AllowedCharactersCheck(string input) =>
             !Regex.IsMatch(input, NotAllowedCharPattern);

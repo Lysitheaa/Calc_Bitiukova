@@ -1,4 +1,4 @@
-﻿namespace Calc_Bitiukova.Operations
+﻿namespace Calc_Bitiukova.OperationModels
 {
     public enum OperationPrioriry
     {

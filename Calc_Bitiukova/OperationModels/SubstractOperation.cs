@@ -1,8 +1,8 @@
 ﻿using System;
-using static Calc_Bitiukova.Operations.OperationUtils;
+using static Calc_Bitiukova.OperationModels.OperationUtils;
 
 
-namespace Calc_Bitiukova.Operations
+namespace Calc_Bitiukova.OperationModels
 {
     public sealed class SubstractOperation : IOperation
     {

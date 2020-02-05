@@ -1,7 +1,8 @@
 ﻿using System;
+using static Calc_Bitiukova.OperationModels.OperationUtils;
 
 
-namespace Calc_Bitiukova.Operations
+namespace Calc_Bitiukova.OperationModels
 {
     public sealed class AddOperation : IOperation
     {
@@ -16,7 +17,7 @@ namespace Calc_Bitiukova.Operations
 
         private AddOperation() { }
 
-        public double ExecuteBinaryOperation(double a, double b) => a + b;
+        public double ExecuteBinaryOperation(double a, double b) => Math.Round(a + b, GetMaxPrecision(a, b));
         
     }
 }
