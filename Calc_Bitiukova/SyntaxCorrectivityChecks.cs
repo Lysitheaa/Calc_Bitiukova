@@ -1,15 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using static Calc_Bitiukova.OperationUtils;
+using Calc_Bitiukova.Operations;
+using static Calc_Bitiukova.Operations.OperationUtils;
 
 
 namespace Calc_Bitiukova
 {
     public static class SyntaxCorrectivityChecks
     {
-        public const string AllowedChars = @"-+*/0-9\. ";
-        private const string NotAllowedCharPattern = @"[^" + AllowedChars + @"]";
-
+        
+        private static readonly string AllowedChars; 
+        private static readonly string NotAllowedCharPattern;
+        private static readonly string AllowedOperations;
 
         public delegate bool ChecksHandler(string input);
         private static event ChecksHandler _checkAll;
@@ -40,6 +42,10 @@ namespace Calc_Bitiukova
             _checkAll += ExpressionCheck;
             _checkAll += BracketsCheck;
             _checkAll += AllowedCharactersCheck;
+
+            AllowedOperations = string.Join("\\", OperationsContainer.OperationDesignations);
+            AllowedChars = @"0-9 \." + AllowedOperations;
+            NotAllowedCharPattern = @"[^" + AllowedChars + @"]";
         }
         
         public static bool BracketsCheck(string input)
@@ -63,12 +69,12 @@ namespace Calc_Bitiukova
         public static bool ExpressionCheck(string input) => 
             Regex.IsMatch(
                 input,
-                @"^[-+]?" + NUMBER_PATTERN + @"([-+*/]" + NUMBER_PATTERN + @")*$");
-        
+                @"^" + NUMBER_PATTERN + @"([" + AllowedOperations + "]" + NUMBER_PATTERN + @")*$"); 
+
         public static bool AllowedCharactersCheck(string input) =>
             !Regex.IsMatch(input, NotAllowedCharPattern);
 
-        public static bool ApplyAllSyntaxChecks(string input, out string message)
+        public static bool ApplyAllChecks(string input, out string message)
         {
             message = _messages["OK"];
 

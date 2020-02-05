@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using static Calc_Bitiukova.OperationUtils;
 
 
-namespace Calc_Bitiukova
+namespace Calc_Bitiukova.Operations
 {
     public static class OperationsContainer
     {

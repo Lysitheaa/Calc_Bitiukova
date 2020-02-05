@@ -1,5 +1,5 @@
-﻿using Calc_Bitiukova.Operations;
-using System;
+﻿using System;
+using Calc_Bitiukova.Operations;
 
 
 namespace Calc_Bitiukova
@@ -12,30 +12,34 @@ namespace Calc_Bitiukova
 
             while (true)
             {
-                Console.WriteLine($"\nPlease, input an expression using only next characters {SyntaxCorrectivityChecks.AllowedChars}");
+                Console.Write($"Please, input an expression using only ");
+                WriteAttantionMessage(OperationUtils.AllowedCharsMessage);
+                
                 string input = Console.ReadLine();
 
                 if (input == "q")
                     break;
 
-                PrepareData(ref input);
+                OperationUtils.PrepareData(ref input);
 
-                if (!SyntaxCorrectivityChecks.ApplyAllSyntaxChecks(input, out string message))
+                if (!SyntaxCorrectivityChecks.ApplyAllChecks(input, out string message))
                 {
                     WriteErrorMessage(message);
+                    Console.WriteLine();
                     continue;
                 }
 
                 //try
                 //{
                     Calculation c = new Calculation(input);
-                    Console.WriteLine($"Result: {c.Result}");
+                    WriteSuccessMessage("Result: ");
+                    Console.WriteLine(c.Result.ToString());
                 //}
                 //catch (Exception e)
                 //{
                 //    WriteErrorMessage(e.Message);
                 //}
-
+                Console.WriteLine();
             }
         }
 
@@ -45,15 +49,24 @@ namespace Calc_Bitiukova
             OperationsContainer.AddOperation(SubstractOperation.Instance);
         }
 
-        static void PrepareData(ref string input)
-        {
-            input = input.Replace(" ", "");
-        }
-
         static void WriteErrorMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        static void WriteAttantionMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(message);
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        static void WriteSuccessMessage(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write(message);
             Console.ForegroundColor = ConsoleColor.White;
         }
     }

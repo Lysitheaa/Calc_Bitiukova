@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Calc_Bitiukova
+﻿namespace Calc_Bitiukova.Operations
 {
-
     public interface IOperation
     {
         public static AddOperation Instance { get; }
 
-        OperationUtils.OperationPrioriry Priority { get; } 
+        OperationPrioriry Priority { get; } 
         
         string Designation { get; }
 
         double ExecuteBinaryOperation(double a, double b);
 
 
-        // bool SyntaxCheck();
-        // string ErrorMessage();
+        // bool SyntaxCheck(string input);
+        // string GetErrorMessage { get; };
     }
 }

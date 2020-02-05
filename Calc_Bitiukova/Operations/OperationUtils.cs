@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Text.RegularExpressions;
 
-namespace Calc_Bitiukova
+
+namespace Calc_Bitiukova.Operations
 {
     public static class OperationUtils
     {
         public const string NUMBER_PATTERN = @"\d+(?:\.\d+)?";
-
-
-        public enum OperationPrioriry
-        {
-            First,
-            Second,
-            Third
-        }
+        public static readonly string AllowedCharsMessage = "numbers, white space and symbols: " 
+            + string.Join(" ", OperationsContainer.OperationDesignations);
 
         public static int GetMaxPrecision(double a, double b)
         {
@@ -26,6 +19,13 @@ namespace Calc_Bitiukova
             int bPres = bStr.Length - bStr.IndexOf(".");
 
             return aPres > bPres ? aPres : bPres;
+        }
+
+        public static void PrepareData(ref string input)
+        {
+            input = input.Replace(" ", "");
+            if (Regex.IsMatch(input, @"^[-+]"))
+                input = "0" + input;
         }
     }
 }
