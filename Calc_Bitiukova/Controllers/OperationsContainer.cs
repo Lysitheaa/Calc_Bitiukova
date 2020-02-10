@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using CommonData;
+using Interfaces;
 
-
-namespace Calc_Bitiukova.OperationModels
+namespace CalculatorBLL.Controllers
 {
+    public delegate double ExecuteBinaryOperationHandler(double operand1, double operand2);
+
     public static class OperationsContainer
     {
-        private static Dictionary<string, IOperation> _operations = new Dictionary<string, IOperation>();
-        
-        public static string[] OperationDesignations => _operations.Keys.ToArray();
+        private static readonly Dictionary<string, IOperation> _operations = new Dictionary<string, IOperation>();
 
-        public delegate double ExecuteBinaryOperationHandler(double a, double b); // where T: notnull;
+        public static string[] OperationDesignations => _operations.Keys.ToArray();
 
         public static void AddOperation(IOperation operation)
         {
