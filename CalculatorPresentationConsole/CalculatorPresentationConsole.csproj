@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calc_Bitiukova\CalculatorBLL.csproj" />
+    <ProjectReference Include="..\CalculatorBLL\CalculatorBLL.csproj" />
   </ItemGroup>
 
 </Project>

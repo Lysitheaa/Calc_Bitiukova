@@ -11,10 +11,4 @@
     <ProjectReference Include="..\CommonData\CommonData.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="CommonData">
-      <HintPath>..\CommonData\bin\Debug\netcoreapp3.1\CommonData.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
 </Project>
