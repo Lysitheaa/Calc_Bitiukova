@@ -8,7 +8,7 @@ namespace CalculatorBLL.Controllers
 
     public class ValidationChecks
     {
-        private static readonly Regex NotAllowedCharPattern = new Regex(@"[^0-9()\." + AllowedOperationsPattern + @"]", RegexOptions.Compiled);
+        private static readonly Regex NotAllowedCharPattern = new Regex(@"[^()" + NumberPattrn + AllowedOperationsPattern + @"]", RegexOptions.Compiled);
         private Dictionary<string, string> Messages = new Dictionary<string, string>
         {
             ["OK"] = "All checks are passed successfully.",

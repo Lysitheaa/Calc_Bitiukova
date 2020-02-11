@@ -13,7 +13,7 @@ namespace CalculatorBLL.Operations
 
         public static SubstractOperation Instance => instance.Value;
 
-        public string Designation => "-";
+        public string Designation => "–";
 
         public OperationPrioriry Priority => OperationPrioriry.Third;
 

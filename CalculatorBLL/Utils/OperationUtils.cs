@@ -5,7 +5,7 @@ namespace CalculatorBLL.Utils
 {
     public static class OperationUtils
     {
-        public const string NumberPattrn = @"\d+(?:\.\d+)?";
+        public const string NumberPattrn = @"\-?\d+(?:\.\d+)?";
         public static readonly string AllowedCharsMessage;
         public static readonly string AllowedOperationsPattern;
 
@@ -40,6 +40,8 @@ namespace CalculatorBLL.Utils
         public static void PrepareData(ref string input)
         {
             input = input.Replace(" ", "");
+            input = input.Replace("-", "–");
+
             if (Regex.IsMatch(input, @"^[\." + AllowedOperationsPattern + "]"))
             {
                 input = "0" + input;

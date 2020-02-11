@@ -7,7 +7,7 @@ namespace CalculatorBLL.Controllers
 {
     public delegate double ExecuteBinaryOperationHandler(double operand1, double operand2);
 
-    public static class OperationsContainer
+    public class OperationsContainer
     {
         private static readonly Dictionary<string, IOperation> _operations = new Dictionary<string, IOperation>();
 

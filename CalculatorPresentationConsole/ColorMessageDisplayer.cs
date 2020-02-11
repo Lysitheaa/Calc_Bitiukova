@@ -22,7 +22,7 @@ namespace CalculatorPresentationConsole
         public static void WriteSuccessMessage(string message)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(message);
+            Console.WriteLine(message);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine();
         }
